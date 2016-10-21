@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-configuration
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://tis.co.jp/nablarch/component-configuration"
+        xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration /component-configuration.xsd">
+
+  <config-file file="unit-test.config" />
+  <import file="db-queue.xml"/>
+
+
+  <!-- データベース設定 -->
+  <!-- DbInfo -->
+  <component name="dbInfo" class="nablarch.test.core.db.GenericJdbcDbInfo">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="schema" value="${nablarch.db.schema}"/>
+  </component>
+
+  <!-- テスティングフレームワークの設定 -->
+  <import file="nablarch/test/test-data.xml"/>
+  <import file="nablarch/test/test-transaction.xml"/>
+
+</component-configuration>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component-configuration
+    xmlns="http://tis.co.jp/nablarch/component-configuration"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration  /component-configuration.xsd">
+
+  <!-- 環境設定ファイル -->
+  <import file="config/import-config.xml" />
+
+  <!-- テーブル定義 -->
+  <import file="nablarch/schema-config.xml" />
+
+  <!-- バッチ固有の設定読み込み -->
+  <!-- データベース設定-->
+  <import file="nablarch/batch/db-for-batch.xml" />
+  <import file="data-source.xml" />
+
+  <!-- リクエストスレッドループ制御機能 -->
+  <import file="nablarch/common/standalone/process-service.xml" />
+  <!-- プロセス停止機能 -->
+  <import file="nablarch/common/standalone/process-stop.xml" />
+  <!-- リトライ機能 -->
+  <import file="nablarch/common/standalone/standalone-retry.xml" />
+  <!-- データリード機能 -->
+  <import file="nablarch/batch/batch-data-read.xml" />
+
+  <!-- ダイアレクト設定 -->
+  <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
+
+  <!-- ハンドラキュー構成 -->
+  <list name="handlerQueue">
+
+    <!-- ステータスコード変換 -->
+    <component class="nablarch.fw.handler.StatusCodeConvertHandler" />
+
+    <!-- グローバルエラーハンドラ -->
+    <component class="nablarch.fw.handler.GlobalErrorHandler" />
+
+    <!-- スレッドコンテキスト -->
+    <component name="threadContextHandler"
+        class="nablarch.common.handler.threadcontext.ThreadContextHandler">
+      <property name="attributes">
+        <list>
+          <!-- リクエストID -->
+          <component class="nablarch.common.handler.threadcontext.RequestIdAttribute" />
+        </list>
+      </property>
+    </component>
+
+    <!-- リトライハンドラ -->
+    <component-ref name="retryHandler" />
+
+    <!-- データベース接続ハンドラ -->
+    <component-ref name="dbConnectionManagementHandler" />
+
+    <!-- トランザクション制御ハンドラ -->
+    <component-ref name="transactionManagementHandler" />
+
+    <!-- ディスパッチ -->
+    <component class="nablarch.fw.handler.RequestPathJavaPackageMapping">
+      <property name="basePackage" value="${nablarch.commonProperty.basePackage}" />
+      <property name="immediate" value="false" />
+      <property name="classNameSuffix" value="Action" />
+    </component>
+
+    <!-- マルチスレッド実行制御ハンドラ -->
+    <component name="multiThreadExecutionHandler" class="nablarch.fw.handler.MultiThreadExecutionHandler">
+      <property name="concurrentNumber" value="${nablarch.multiThreadExecutionHandler.threadCount}" />
+    </component>
+
+    <!-- データベース接続ハンドラ -->
+    <component-ref name="dbConnectionManagementHandler" />
+
+    <!-- リクエストスレッド内ループ制御ハンドラ -->
+    <component-ref name="requestThreadLoopHandler" />
+
+    <!-- プロセス停止ハンドラ -->
+    <component-ref name="processStopHandler" />
+
+    <!-- データリードハンドラ -->
+    <component-ref name="dataReadHandler" />
+
+    <!-- トランザクション制御ハンドラ -->
+    <component-ref name="transactionManagementHandler" />
+  </list>
+
+  <!-- 初期化が必要なコンポーネント -->
+  <component name="initializer"
+      class="nablarch.core.repository.initialization.BasicApplicationInitializer">
+    <property name="initializeList">
+      <list>
+        <!-- common/date.xml:業務日付コンポーネント -->
+        <component-ref name="businessDateProvider" />
+        <component-ref name="processStopHandler" />
+      </list>
+    </property>
+  </component>
+</component-configuration>

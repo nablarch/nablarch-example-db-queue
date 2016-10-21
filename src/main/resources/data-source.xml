@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-configuration
+        xmlns="http://tis.co.jp/nablarch/component-configuration"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration /component-configuration.xsd">
+
+  <!-- H2 commons dbcp 使用 -->
+  <component name="dataSource"
+             class="org.h2.jdbcx.JdbcDataSource">
+    <property name="url" value="${nablarch.db.url}"/>
+    <property name="user" value="${nablarch.db.user}"/>
+    <property name="password" value="${nablarch.db.password}"/>
+  </component>
+</component-configuration>

@@ -1,0 +1,2 @@
+BATCH_REQUEST_ID, BATCH_REQUEST_NAME, PROCESS_HALT_FLG
+ProjectCreationService,プロジェクト情報を定期的に取り込むサービスアプリケーション,0

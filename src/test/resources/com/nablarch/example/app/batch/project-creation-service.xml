@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component-configuration
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://tis.co.jp/nablarch/component-configuration"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration  /component-configuration.xsd">
+
+  <!-- 環境設定ファイル -->
+  <import file="db-queue.xml" />
+
+  <!-- サービスの実行を一度だけに抑制するハンドラ -->
+  <component name="requestThreadLoopHandler" class="nablarch.test.OneShotLoopHandler" />
+
+</component-configuration>
