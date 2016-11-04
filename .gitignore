@@ -151,3 +151,6 @@ gsp-target
 
 ## log
 *.log
+
+## workspace
+target/
