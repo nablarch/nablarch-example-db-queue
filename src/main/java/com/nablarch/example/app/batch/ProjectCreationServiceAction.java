@@ -30,7 +30,7 @@ import nablarch.fw.reader.DatabaseTableQueueReader;
 public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
 
     /** SQLID */
-    private static final String SQL_ID = "com/nablarch/example/app/batch/ProjectCreationServiceAction#";
+    private static final String SQL_ID = ProjectCreationServiceAction.class.getName() + '#';
 
     /** プロセスIDを保持するDTO */
     private static final ProcessDto PROCESS_DTO = new ProcessDto(UUID.randomUUID().toString());
