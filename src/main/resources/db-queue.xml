@@ -28,6 +28,13 @@
   <!-- ダイアレクト設定 -->
   <component name="dialect" class="nablarch.core.db.dialect.H2Dialect" />
 
+  <!-- トランザクションマネージャ -->
+  <component name="redundancyTransaction" class="nablarch.core.db.transaction.SimpleDbTransactionManager">
+    <property name="connectionFactory" ref="connectionFactory" />
+    <property name="transactionFactory" ref="transactionFactory" />
+    <property name="dbTransactionName" value="redundancyTransaction" />
+  </component>
+
   <!-- ハンドラキュー構成 -->
   <list name="handlerQueue">
 

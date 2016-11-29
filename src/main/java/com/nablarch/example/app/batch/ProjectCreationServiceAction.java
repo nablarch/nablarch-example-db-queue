@@ -1,15 +1,20 @@
 package com.nablarch.example.app.batch;
 
 import java.util.Date;
+import java.util.UUID;
 import java.util.function.Function;
 
 import com.nablarch.example.app.entity.Project;
 
 import nablarch.common.dao.UniversalDao;
+import nablarch.core.db.connection.AppDbConnection;
 import nablarch.core.db.statement.SqlRow;
+import nablarch.core.db.transaction.SimpleDbTransactionExecutor;
+import nablarch.core.db.transaction.SimpleDbTransactionManager;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
+import nablarch.core.repository.SystemRepository;
 import nablarch.fw.DataReader;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.Result;
@@ -24,12 +29,18 @@ import nablarch.fw.reader.DatabaseTableQueueReader;
  */
 public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
 
+    /** SQLID */
+    private static final String SQL_ID = "com/nablarch/example/app/batch/ProjectCreationServiceAction#";
+
+    /** プロセスIDを保持するDTO */
+    private static final ProcessDto PROCESS_DTO = new ProcessDto(UUID.randomUUID().toString());
+
     @Override
     public Result handle(final SqlRow inputData, final ExecutionContext context) {
 
         final Project project = UniversalDao.findBySqlFile(
                 Project.class,
-                "com.nablarch.example.app.batch.ProjectCreationServiceAction#GET_RECEIVED_PROJECT",
+                SQL_ID + "GET_RECEIVED_PROJECT",
                 inputData);
 
         if (!isValidProjectPeriod(project)) {
@@ -85,7 +96,20 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
     @Override
     public DataReader<SqlRow> createReader(final ExecutionContext context) {
         final DatabaseRecordReader databaseRecordReader = new DatabaseRecordReader();
-        databaseRecordReader.setStatement(getSqlPStatement("FIND_RECEIVED_PROJECTS"));
+        databaseRecordReader.setStatement(getParameterizedSqlStatement("FIND_RECEIVED_PROJECTS"), PROCESS_DTO);
+        databaseRecordReader.setListener(() -> {
+            final SimpleDbTransactionManager transactionManager = SystemRepository.get("redundancyTransaction");
+            new SimpleDbTransactionExecutor<Void>(transactionManager) {
+                @Override
+                public Void execute(final AppDbConnection appDbConnection) {
+                    appDbConnection
+                            .prepareParameterizedSqlStatementBySqlId(SQL_ID + "UPDATE_PROCESS_ID")
+                            .executeUpdateByObject(PROCESS_DTO);
+                    return null;
+                }
+            }.doTransaction();
+
+        });
         return new DatabaseTableQueueReader(databaseRecordReader, 1000, "RECEIVED_MESSAGE_SEQUENCE");
     }
 
@@ -146,6 +170,35 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
          */
         private static StatusUpdateDto createAbnormalEnd(String id) {
             return new StatusUpdateDto(id, "2");
+        }
+    }
+
+    /**
+     * プロセスIDを保持するBean。
+     *
+     * @author Nabu Rakutaro
+     */
+    public static class ProcessDto {
+
+        /** プロセスID */
+        private final String processId;
+
+        /**
+         * インスタンスを生成する。
+         *
+         * @param processId プロセスID
+         */
+        public ProcessDto(String processId) {
+            this.processId = processId;
+        }
+
+        /**
+         * プロセスIDを取得する。
+         *
+         * @return プロセスID
+         */
+        public String getProcessId() {
+            return processId;
         }
     }
 }
