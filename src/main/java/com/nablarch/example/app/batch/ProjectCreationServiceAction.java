@@ -31,8 +31,8 @@ import nablarch.fw.reader.DatabaseTableQueueReader;
  */
 public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
 
-    /** SQLID */
-    private static final String SQL_ID = ProjectCreationServiceAction.class.getName() + '#';
+    /** SQLIDのプレフィックス */
+    private static final String SQL_ID_PREFIX = ProjectCreationServiceAction.class.getName() + '#';
 
     /** プロセスIDを保持するマップ */
     private static final Map<String, String> PROCESS_MAP = new HashMap<>();
@@ -46,7 +46,7 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
 
         final Project project = UniversalDao.findBySqlFile(
                 Project.class,
-                SQL_ID + "GET_RECEIVED_PROJECT",
+                SQL_ID_PREFIX + "GET_RECEIVED_PROJECT",
                 inputData);
 
         if (!isValidProjectPeriod(project)) {
@@ -109,7 +109,7 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
                 @Override
                 public Void execute(final AppDbConnection appDbConnection) {
                     appDbConnection
-                            .prepareParameterizedSqlStatementBySqlId(SQL_ID + "UPDATE_PROCESS_ID")
+                            .prepareParameterizedSqlStatementBySqlId(SQL_ID_PREFIX + "UPDATE_PROCESS_ID")
                             .executeUpdateByMap(PROCESS_MAP);
                     return null;
                 }
