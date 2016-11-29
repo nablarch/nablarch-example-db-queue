@@ -1,6 +1,8 @@
 package com.nablarch.example.app.batch;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.function.Function;
 
@@ -32,8 +34,12 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
     /** SQLID */
     private static final String SQL_ID = ProjectCreationServiceAction.class.getName() + '#';
 
-    /** プロセスIDを保持するDTO */
-    private static final ProcessDto PROCESS_DTO = new ProcessDto(UUID.randomUUID().toString());
+    /** プロセスIDを保持するマップ */
+    private static final Map<String, String> PROCESS_MAP = new HashMap<>();
+
+    static {
+        PROCESS_MAP.put("processId", UUID.randomUUID().toString());
+    }
 
     @Override
     public Result handle(final SqlRow inputData, final ExecutionContext context) {
@@ -96,7 +102,7 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
     @Override
     public DataReader<SqlRow> createReader(final ExecutionContext context) {
         final DatabaseRecordReader databaseRecordReader = new DatabaseRecordReader();
-        databaseRecordReader.setStatement(getParameterizedSqlStatement("FIND_RECEIVED_PROJECTS"), PROCESS_DTO);
+        databaseRecordReader.setStatement(getParameterizedSqlStatement("FIND_RECEIVED_PROJECTS"), PROCESS_MAP);
         databaseRecordReader.setListener(() -> {
             final SimpleDbTransactionManager transactionManager = SystemRepository.get("redundancyTransaction");
             new SimpleDbTransactionExecutor<Void>(transactionManager) {
@@ -104,7 +110,7 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
                 public Void execute(final AppDbConnection appDbConnection) {
                     appDbConnection
                             .prepareParameterizedSqlStatementBySqlId(SQL_ID + "UPDATE_PROCESS_ID")
-                            .executeUpdateByObject(PROCESS_DTO);
+                            .executeUpdateByMap(PROCESS_MAP);
                     return null;
                 }
             }.doTransaction();
@@ -170,35 +176,6 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
          */
         private static StatusUpdateDto createAbnormalEnd(String id) {
             return new StatusUpdateDto(id, "2");
-        }
-    }
-
-    /**
-     * プロセスIDを保持するBean。
-     *
-     * @author Nabu Rakutaro
-     */
-    public static class ProcessDto {
-
-        /** プロセスID */
-        private final String processId;
-
-        /**
-         * インスタンスを生成する。
-         *
-         * @param processId プロセスID
-         */
-        public ProcessDto(String processId) {
-            this.processId = processId;
-        }
-
-        /**
-         * プロセスIDを取得する。
-         *
-         * @return プロセスID
-         */
-        public String getProcessId() {
-            return processId;
         }
     }
 }
