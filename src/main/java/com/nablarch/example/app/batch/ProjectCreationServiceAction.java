@@ -1,15 +1,22 @@
 package com.nablarch.example.app.batch;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.function.Function;
 
 import com.nablarch.example.app.entity.Project;
 
 import nablarch.common.dao.UniversalDao;
+import nablarch.core.db.connection.AppDbConnection;
 import nablarch.core.db.statement.SqlRow;
+import nablarch.core.db.transaction.SimpleDbTransactionExecutor;
+import nablarch.core.db.transaction.SimpleDbTransactionManager;
 import nablarch.core.message.ApplicationException;
 import nablarch.core.message.MessageLevel;
 import nablarch.core.message.MessageUtil;
+import nablarch.core.repository.SystemRepository;
 import nablarch.fw.DataReader;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.Result;
@@ -24,12 +31,22 @@ import nablarch.fw.reader.DatabaseTableQueueReader;
  */
 public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
 
+    /** SQLIDのプレフィックス */
+    private static final String SQL_ID_PREFIX = ProjectCreationServiceAction.class.getName() + '#';
+
+    /** プロセスIDを保持するマップ */
+    private static final Map<String, String> PROCESS_MAP = new HashMap<>();
+
+    static {
+        PROCESS_MAP.put("processId", UUID.randomUUID().toString());
+    }
+
     @Override
     public Result handle(final SqlRow inputData, final ExecutionContext context) {
 
         final Project project = UniversalDao.findBySqlFile(
                 Project.class,
-                "com.nablarch.example.app.batch.ProjectCreationServiceAction#GET_RECEIVED_PROJECT",
+                SQL_ID_PREFIX + "GET_RECEIVED_PROJECT",
                 inputData);
 
         if (!isValidProjectPeriod(project)) {
@@ -85,7 +102,20 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
     @Override
     public DataReader<SqlRow> createReader(final ExecutionContext context) {
         final DatabaseRecordReader databaseRecordReader = new DatabaseRecordReader();
-        databaseRecordReader.setStatement(getSqlPStatement("FIND_RECEIVED_PROJECTS"));
+        databaseRecordReader.setStatement(getParameterizedSqlStatement("FIND_RECEIVED_PROJECTS"), PROCESS_MAP);
+        databaseRecordReader.setListener(() -> {
+            final SimpleDbTransactionManager transactionManager = SystemRepository.get("redundancyTransaction");
+            new SimpleDbTransactionExecutor<Void>(transactionManager) {
+                @Override
+                public Void execute(final AppDbConnection appDbConnection) {
+                    appDbConnection
+                            .prepareParameterizedSqlStatementBySqlId(SQL_ID_PREFIX + "UPDATE_PROCESS_ID")
+                            .executeUpdateByMap(PROCESS_MAP);
+                    return null;
+                }
+            }.doTransaction();
+
+        });
         return new DatabaseTableQueueReader(databaseRecordReader, 1000, "RECEIVED_MESSAGE_SEQUENCE");
     }
 

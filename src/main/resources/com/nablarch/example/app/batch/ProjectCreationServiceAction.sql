@@ -5,11 +5,10 @@ select
 from
   ins_project_receive_message
 where
-  status = '0'
+  status = '0' and process_id = :processId
 
 GET_RECEIVED_PROJECT=
 select
-  received_message_sequence,
   project_name,
   project_type,
   project_class,
@@ -23,8 +22,7 @@ select
   sales,
   cost_of_goods_sold,
   sga,
-  allocation_of_corp_expenses,
-  status
+  allocation_of_corp_expenses
 from
   ins_project_receive_message
 where
@@ -39,3 +37,13 @@ set
   status = :newStatus
 where
   received_message_sequence = :id
+
+-- プロセスIDを更新するSQL
+UPDATE_PROCESS_ID =
+update
+  ins_project_receive_message
+set
+  process_id = :processId
+where
+  status = '0' and process_id is null
+
