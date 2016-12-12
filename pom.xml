@@ -100,7 +100,6 @@
     <dependency>
       <groupId>com.nablarch.framework</groupId>
       <artifactId>nablarch-fw-batch</artifactId>
-      <version>1.2.0</version>
     </dependency>
 
     <dependency>
