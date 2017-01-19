@@ -1,5 +1,6 @@
 package com.nablarch.example.app.batch;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +21,7 @@ import nablarch.core.repository.SystemRepository;
 import nablarch.fw.DataReader;
 import nablarch.fw.ExecutionContext;
 import nablarch.fw.Result;
+import nablarch.fw.Result.Success;
 import nablarch.fw.action.BatchAction;
 import nablarch.fw.reader.DatabaseRecordReader;
 import nablarch.fw.reader.DatabaseTableQueueReader;
@@ -35,14 +37,16 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
     private static final String SQL_ID_PREFIX = ProjectCreationServiceAction.class.getName() + '#';
 
     /** プロセスIDを保持するマップ */
-    private static final Map<String, String> PROCESS_MAP = new HashMap<>();
+    private static final Map<String, String> PROCESS_MAP;
 
     static {
-        PROCESS_MAP.put("processId", UUID.randomUUID().toString());
+        Map<String, String> map = new HashMap<>();
+        map.put("processId", UUID.randomUUID().toString());
+        PROCESS_MAP = Collections.unmodifiableMap(map);
     }
 
     @Override
-    public Result handle(final SqlRow inputData, final ExecutionContext context) {
+    public Result handle(final SqlRow inputData, final ExecutionContext ctx) {
 
         final Project project = UniversalDao.findBySqlFile(
                 Project.class,
@@ -55,7 +59,7 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
 
         UniversalDao.insert(project);
 
-        return new Result.Success();
+        return new Success();
     }
 
     /**
@@ -72,10 +76,7 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
         }
         final Date startDate = project.getProjectStartDate();
         final Date endDate = project.getProjectEndDate();
-        if (startDate == null || endDate == null) {
-            return true;
-        }
-        return startDate.compareTo(endDate) <= 0;
+        return startDate == null || endDate == null || startDate.compareTo(endDate) <= 0;
     }
 
     /**
@@ -94,13 +95,19 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
         updateStatus(inputData, StatusUpdateDto::createAbnormalEnd);
     }
 
+    /**
+     * ステータスの更新処理を実行する。
+     *
+     * @param inputData 入力データ
+     * @param function ステータス更新DTOのインスタンスを生成する関数
+     */
     private void updateStatus(final SqlRow inputData, final Function<String, StatusUpdateDto> function) {
         getParameterizedSqlStatement("UPDATE_STATUS")
                 .executeUpdateByObject(function.apply(inputData.getString("RECEIVED_MESSAGE_SEQUENCE")));
     }
 
     @Override
-    public DataReader<SqlRow> createReader(final ExecutionContext context) {
+    public DataReader<SqlRow> createReader(final ExecutionContext ctx) {
         final DatabaseRecordReader databaseRecordReader = new DatabaseRecordReader();
         databaseRecordReader.setStatement(getParameterizedSqlStatement("FIND_RECEIVED_PROJECTS"), PROCESS_MAP);
         databaseRecordReader.setListener(() -> {
@@ -119,64 +126,5 @@ public class ProjectCreationServiceAction extends BatchAction<SqlRow> {
         return new DatabaseTableQueueReader(databaseRecordReader, 1000, "RECEIVED_MESSAGE_SEQUENCE");
     }
 
-    /**
-     * ステータスを更新するための情報を持つBean。
-     *
-     * @author Nabu Rakutaro
-     */
-    public static final class StatusUpdateDto {
-
-        /** id */
-        private final String id;
-
-        /** 更新後のステータス */
-        private final String newStatus;
-
-        /**
-         * Beanを生成する。
-         * @param id ID
-         * @param newStatus 更新後のステータス
-         */
-        public StatusUpdateDto(final String id, final String newStatus) {
-            this.id = id;
-            this.newStatus = newStatus;
-        }
-
-        /**
-         * IDを取得する。
-         * @return ID
-         */
-        public String getId() {
-            return id;
-        }
-
-        /**
-         * 更新後のステータスを取得する。
-         * @return 更新後のステータス
-         */
-        public String getNewStatus() {
-            return newStatus;
-        }
-
-        /**
-         * 正常終了を示すオブジェクトを生成する。
-         *
-         * @param id ID
-         * @return 生成したオブジェクト
-         */
-        private static StatusUpdateDto createNormalEnd(String id) {
-            return new StatusUpdateDto(id, "1");
-        }
-
-        /**
-         * 異常終了を示すオブジェクトを生成する。
-         *
-         * @param id ID
-         * @return 生成したオブジェクト
-         */
-        private static StatusUpdateDto createAbnormalEnd(String id) {
-            return new StatusUpdateDto(id, "2");
-        }
-    }
 }
 
