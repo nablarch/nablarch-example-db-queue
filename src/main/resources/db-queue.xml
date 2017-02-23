@@ -40,6 +40,9 @@
 
     <!-- ステータスコード変換 -->
     <component class="nablarch.fw.handler.StatusCodeConvertHandler" />
+    
+    <!-- スレッドコンテキストクリアハンドラ -->
+    <component class="nablarch.common.handler.threadcontext.ThreadContextClearHandler" />
 
     <!-- グローバルエラーハンドラ -->
     <component class="nablarch.fw.handler.GlobalErrorHandler" />
