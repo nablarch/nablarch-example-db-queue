@@ -33,13 +33,13 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 以下のコマンドでアプリケーションを起動します。
 
 ```
-    mvn exec:java -Dexec.mainClass=nablarch.fw.launcher.Main -Dexec.args="'-diConfig' 'com/nablarch/example/app/batch/project-creation-service.xml' 'ation-service.xml' '-requestPath' 'ProjectCreationService' '-userId' 'samp'"
+    mvn exec:java -Dexec.mainClass=nablarch.fw.launcher.Main -Dexec.args="'-diConfig' 'com/nablarch/example/app/batch/project-creation-service.xml' '-requestPath' 'ProjectCreationService' '-userId' 'samp'"
 ```
 
 なお、 `maven-assembly-plugin` を使用して実行可能jarの生成を行っているため、以下のコマンドでもアプリケーションを実行することが可能です。
 
 ```
-    java -jar target/application-5u9.jar -diConfig com/nablarch/example/app/batch/project-creation-service.xml ation-service.xml -requestPath ProjectCreationService -userId samp
+    java -jar target/application-5u9.jar -diConfig com/nablarch/example/app/batch/project-creation-service.xml -requestPath ProjectCreationService -userId samp
 ```
 
 ### 5. DBの確認方法
