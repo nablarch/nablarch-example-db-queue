@@ -23,21 +23,23 @@ Gitを使用している場合、アプリケーションを配置したいデ�
 
 Gitを使用しない場合、最新のタグからzipをダウンロードし、任意のディレクトリへ展開してください。
 
-### 3. アプリケーションのビルド、依存するライブラリの取得
+### 3. アプリケーションのビルド
 次に、アプリケーションをビルドします。以下のコマンドを実行してください。
 
     $cd nablarch-example-db-queue
-    $mvn clean install
-
-ビルド後、以下のコマンドを実行し依存するライブラリを取得します。
-
-    $mvn dependency:copy-dependencies -DoutputDirectory=target/dependency
+    $mvn clean package
 
 ### 4. アプリケーションの起動
 以下のコマンドでアプリケーションを起動します。
 
 ```
-    $java -classpath target/classes;target/dependency/* nablarch.fw.launcher.Main -diConfig com/nablarch/example/app/batch/project-creation-service.xml -requestPath ProjectCreationService -userId sample
+    mvn exec:java -Dexec.mainClass=nablarch.fw.launcher.Main -Dexec.args="'-diConfig' 'com/nablarch/example/app/batch/project-creation-service.xml' 'ation-service.xml' '-requestPath' 'ProjectCreationService' '-userId' 'samp'"
+```
+
+なお、 `maven-assembly-plugin` を使用して実行可能jarの生成を行っているため、以下のコマンドでもアプリケーションを実行することが可能です。
+
+```
+    java -jar target/application-5u9.jar -diConfig com/nablarch/example/app/batch/project-creation-service.xml ation-service.xml -requestPath ProjectCreationService -userId samp
 ```
 
 ### 5. DBの確認方法
