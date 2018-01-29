@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration  https://nablarch.github.io/schema/component-configuration.xsd">
 
-  <config-file file="config/database.config" />
-  <config-file file="config/package.config" />
-  <config-file file="config/process.config" />
+  <config-file file="config/database.properties" />
+  <config-file file="config/package.properties" />
+  <config-file file="config/process.properties" />
 </component-configuration>

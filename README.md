@@ -43,9 +43,12 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 
 なお、 `maven-assembly-plugin` を使用して実行可能jarの生成を行っているため、以下のコマンドでもアプリケーションを実行することが可能です。
 
-```
-    java -jar target/application-<version_no>.jar -diConfig com/nablarch/example/app/batch/project-creation-service.xml -requestPath ProjectCreationService -userId samp
-```
+1. ``target/application-<version_no>.zip`` を任意のディレクトリに解凍する。
+2. 以下のコマンドにて実行する
+
+  ```
+      java -jar <1で解凍したディレクトリ名>/nablarch-example-db-queue-<version_no>.jar -diConfig com/nablarch/example/app/batch/project-creation-service.xml -requestPath ProjectCreationService -userId sample
+  ```
 
 ### 5. DBの確認方法
 
