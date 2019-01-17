@@ -6,7 +6,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-db-queue</artifactId>
-  <version>5u14-SNAPSHOT</version>
+  <version>5u14</version>
 
   <properties>
     <scheme>データベースメッセージング</scheme>
@@ -235,7 +235,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u14-SNAPSHOT</version>
+        <version>5u14</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
