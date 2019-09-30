@@ -6,7 +6,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-db-queue</artifactId>
-  <version>5u14</version>
+  <version>5u15</version>
 
   <properties>
     <scheme>データベースメッセージング</scheme>
@@ -56,6 +56,13 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <version>1.4.196</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>3.3.1</version>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>
@@ -203,7 +210,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.20</version>
+        <version>2.22.2</version>
         <configuration>
           <!-- MANIFEST.MFでClass-Pathを指定すると、依存jar内で定義されているtaglibのuriを正しく解決してくれない。 -->
           <useManifestOnlyJar>false</useManifestOnlyJar>
@@ -213,7 +220,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.0</version>
+        <version>0.8.3</version>
         <configuration>
           <excludes>
             <exclude>**/com/nablarch/example/app/entity/*</exclude>
@@ -235,7 +242,7 @@
       <dependency>
         <groupId>com.nablarch.profile</groupId>
         <artifactId>nablarch-bom</artifactId>
-        <version>5u14</version>
+        <version>5u15</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
