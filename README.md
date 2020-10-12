@@ -1,9 +1,5 @@
 # nablarch-example-db-queue
 
-| master | develop |
-|:-----------|:------------|
-|[![Build Status](https://travis-ci.org/nablarch/nablarch-example-db-queue.svg?branch=master)](https://travis-ci.org/nablarch/nablarch-example-db-queue)|[![Build Status](https://travis-ci.org/nablarch/nablarch-example-db-queue.svg?branch=develop)](https://travis-ci.org/nablarch/nablarch-example-db-queue)|
-
 Nablarch Application Frameworkのデータベースのテーブルをキューとして扱うメッセージング処理のExampleです。
 
 このExampleでは、 ``INS_PROJECT_RECEIVE_MESSAGE`` テーブルをキューとして扱い、定期的に監視します。
