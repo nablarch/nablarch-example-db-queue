@@ -4,7 +4,7 @@
         xmlns="http://tis.co.jp/nablarch/component-configuration"
         xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
 
-  <config-file file="unit-test.config" />
+  <config-file file="unit-test.properties" />
   <import file="db-queue.xml"/>
 
 
