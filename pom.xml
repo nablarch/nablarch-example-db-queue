@@ -6,7 +6,7 @@
 
   <groupId>com.nablarch.example</groupId>
   <artifactId>nablarch-example-db-queue</artifactId>
-  <version>5-NEXT-SNAPSHOT</version>
+  <version>6-NEXT-SNAPSHOT</version>
 
   <properties>
     <scheme>データベースメッセージング</scheme>
