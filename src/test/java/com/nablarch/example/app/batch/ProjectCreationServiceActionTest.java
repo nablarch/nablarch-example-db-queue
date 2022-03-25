@@ -2,20 +2,24 @@ package com.nablarch.example.app.batch;
 
 import nablarch.test.core.batch.BatchRequestTestSupport;
 
-import org.junit.Test;
+import nablarch.test.junit5.extension.batch.BatchRequestTest;
+import org.junit.jupiter.api.Test;
 
 /**
  * {@link ProjectCreationServiceAction}のテストクラス。
  */
-public class ProjectCreationServiceActionTest extends BatchRequestTestSupport {
+@BatchRequestTest
+class ProjectCreationServiceActionTest {
+
+    BatchRequestTestSupport support;
 
     @Test
-    public void 正常にプロジェクト情報が取り込まれるケース() throws Exception {
-        execute();
+    void 正常にプロジェクト情報が取り込まれるケース() throws Exception {
+        support.execute(support.testName.getMethodName());
     }
 
     @Test
-    public void プロジェクトの取り込みに失敗するケース() throws Exception {
-        execute();
+    void プロジェクトの取り込みに失敗するケース() throws Exception {
+        support.execute(support.testName.getMethodName());
     }
 }
