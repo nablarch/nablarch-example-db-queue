@@ -86,7 +86,7 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
         allocation_of_corp_expenses,
         status
     ) values (
-        2,
+        '0000000002',
         'プロジェクト名',
         'development',
         '分類',
