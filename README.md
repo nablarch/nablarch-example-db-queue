@@ -9,8 +9,8 @@ Nablarch Application Frameworkのデータベースのテーブルをキュー�
 
 ### 1.動作環境
 実行環境に以下のソフトウェアがインストールされている事を前提とします。
-* Java Version : 8
-* Maven 3.0.5以降
+* Java Version : 17
+* Maven 3.9.0以降
 
 なお、このアプリケーションはH2 Database Engineを組み込んでいます。別途DBサーバのインストールは必要ありません。
 
@@ -29,6 +29,8 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 
     $cd nablarch-example-db-queue
     $mvn clean package
+
+※gspプラグインをJava 17で実行するためにはJVMオプションの指定が必要ですが、そのオプションは`.mvn/jvm.config`で指定しています。
 
 ### 4. アプリケーションの起動
 以下のコマンドでアプリケーションを起動します。
