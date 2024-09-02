@@ -10,7 +10,7 @@ Nablarch Application Frameworkのデータベースのテーブルをキュー�
 ### 1.動作環境
 実行環境に以下のソフトウェアがインストールされている事を前提とします。
 * Java Version : 17
-* Maven 3.9.0以降
+* Maven 3.9.9以降
 
 なお、このアプリケーションはH2 Database Engineを組み込んでいます。別途DBサーバのインストールは必要ありません。
 
