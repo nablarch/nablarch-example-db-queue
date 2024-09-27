@@ -10,7 +10,7 @@ Nablarch Application Frameworkのデータベースのテーブルをキュー�
 ### 1.動作環境
 実行環境に以下のソフトウェアがインストールされている事を前提とします。
 * Java Version : 17
-* Maven 3.9.0以降
+* Maven 3.9.9以降
 
 なお、このアプリケーションはH2 Database Engineを組み込んでいます。別途DBサーバのインストールは必要ありません。
 
@@ -30,23 +30,32 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
     $cd nablarch-example-db-queue
     $mvn clean package
 
+
+実行に成功すると、以下のようなログがコンソールに出力されます。
+
+    (中略)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    (中略)
+
+#### データベースのセットアップ及びエンティティクラスの作成について
+
+アプリケーションを実行するためにはデータベースのセットアップ及びエンティティクラスの作成が必要ですが、これは`mvn package`の実行に含まれています。この処理は`mvn generate-resources`で個別に実行することもできます。
+
 ※gspプラグインをJava 17で実行するためにはJVMオプションの指定が必要ですが、そのオプションは`.mvn/jvm.config`で指定しています。
 
 ### 4. アプリケーションの起動
 以下のコマンドでアプリケーションを起動します。
 
-```
-    mvn exec:java -Dexec.mainClass=nablarch.fw.launcher.Main -Dexec.args="'-diConfig' 'com/nablarch/example/app/batch/project-creation-service.xml' '-requestPath' 'ProjectCreationService' '-userId' 'samp'"
-```
+    $mvn exec:java -Dexec.mainClass=nablarch.fw.launcher.Main -Dexec.args="'-diConfig' 'com/nablarch/example/app/batch/project-creation-service.xml' '-requestPath' 'ProjectCreationService' '-userId' 'samp'"
 
 なお、 `maven-assembly-plugin` を使用して実行可能jarの生成を行っているため、以下のコマンドでもアプリケーションを実行することが可能です。
 
 1. ``target/application-<version_no>.zip`` を任意のディレクトリに解凍する。
 2. 以下のコマンドにて実行する
 
-  ```
-      java -jar <1で解凍したディレクトリ名>/nablarch-example-db-queue-<version_no>.jar -diConfig com/nablarch/example/app/batch/project-creation-service.xml -requestPath ProjectCreationService -userId sample
-  ```
+       $java -jar <1で解凍したディレクトリ名>/nablarch-example-db-queue-<version_no>.jar -diConfig com/nablarch/example/app/batch/project-creation-service.xml -requestPath ProjectCreationService -userId sample
 
 ### 5. DBの確認方法
 
