@@ -57,25 +57,12 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 
        $java -jar <1で解凍したディレクトリ名>/nablarch-example-db-queue-<version_no>.jar -diConfig com/nablarch/example/app/batch/project-creation-service.xml -requestPath ProjectCreationService -userId sample
 
-### 5. DBの確認方法
-
-1. https://www.h2database.com/html/download.html からH2をインストールしてください。  
-
-2. {インストールフォルダ}/bin/h2.bat を実行してください(コマンドプロンプトが開く)。
-  ※h2.bat実行中はExampleアプリケーションからDBへアクセスすることができないため、Exampleアプリケーションを停止しておいてください。
-
-3. ブラウザから http://localhost:8082 を開き、以下の情報でH2コンソールにログインしてください。
-   JDBC URLの{dbファイルのパス}には、`nablarch_example_db_queue.mv.db`ファイルの格納ディレクトリまでのパスを指定してください。  
-  JDBC URL：jdbc:h2:{dbファイルのパス}/nablarch_example_db_queue  
-  ユーザ名：SAMPLE  
-  パスワード：SAMPLE  
-
-### 6. 動作確認
+### 5. 動作確認
 監視対象テーブルの``INS_PROJECT_RECEIVE_MESSAGE``にデータを投入することで、
-プロジェクトテーブルにデータが作成されます。
-(本ExampleアプリケーションではDBにH2を使用しているため、
-アプリケーション起動中に別のプロセスからDBを操作することができません。
-そのため、アプリケーションを停止し、「5. DBの確認方法」を参考にH2コンソールからデータを投入してください。)
+``PROJECT`` テーブルにデータが作成されます。
+
+本ExampleアプリケーションではDBにH2を使用しているため、アプリケーション起動中に別のプロセスからDBを操作することができません。  
+そのため、アプリケーションを停止し、「6. DBの確認方法」を参考にH2コンソールからデータを投入してください。
 
 投入SQLの例
 ```sql
@@ -118,3 +105,16 @@ Gitを使用しない場合、最新のタグからzipをダウンロードし�
 
 アプリケーションは自動で終了しないので、プロセスを強制終了(Ctrl + C)してください。
 ※プロダクション環境では、プロセス停止ハンドラを使うことで安全にプロセスを終了できます。
+
+### 6. DBの確認方法
+
+1. https://www.h2database.com/html/download.html からH2をインストールしてください。  
+
+2. {インストールフォルダ}/bin/h2.bat を実行してください(コマンドプロンプトが開く)。
+  ※h2.bat実行中はExampleアプリケーションからDBへアクセスすることができないため、Exampleアプリケーションを停止しておいてください。
+
+3. ブラウザから http://localhost:8082 を開き、以下の情報でH2コンソールにログインしてください。
+   JDBC URLの{dbファイルのパス}には、`nablarch_example_db_queue.mv.db`ファイルの格納ディレクトリまでのパスを指定してください。  
+  JDBC URL：jdbc:h2:{dbファイルのパス}/nablarch_example_db_queue  
+  ユーザ名：SAMPLE  
+  パスワード：SAMPLE  
