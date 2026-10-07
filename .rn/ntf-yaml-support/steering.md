@@ -130,10 +130,10 @@ NTF（Nablarch Testing Framework）のAI対応として、AIが読み書きで�
 
 **Steps**:
 
-- [ ] 変換対象となった Excel ファイルを削除する
-- [ ] 削除結果（残存Excelが0件であること）を `checks/task-4.md` に記録する
-- [ ] Excelファイル削除をコミットする
-- [ ] self-check / QA expert review
+- [x] 変換対象となった Excel ファイルを削除する
+- [x] 削除結果（残存Excelが0件であること）を `checks/task-4.md` に記録する
+- [x] Excelファイル削除をコミットする
+- [x] self-check / QA expert review
 - [ ] user review
 
 **Completion criteria**:
@@ -162,5 +162,5 @@ NTF（Nablarch Testing Framework）のAI対応として、AIが読み書きで�
 # State
 
 - **Status**: in progress
-- **Last completed**: #3 Excel→YAML変換（1ブック→3 YAML）。サンプリング差異1件（R92 EXPECTED_TABLE[3]=PROJECT の欠落、NTF未読ブロックの挙動保存）を報告→ユーザー承認「挙動等価として続行」。YAML状態でmvn test全パス確認済み
-- **Next**: #4 Excelを削除する
+- **Last completed**: #4 Excel削除（ProjectCreationServiceActionTest.xlsx を git rm。残存Excel 0件）
+- **Next**: #5 YAMLテストデータで全テストをパスさせる（Excelなしで mvn test）
