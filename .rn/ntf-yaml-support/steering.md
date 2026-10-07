@@ -107,13 +107,13 @@ NTF（Nablarch Testing Framework）のAI対応として、AIが読み書きで�
 
 **Steps**:
 
-- [ ] 対象 Excel ファイルの所在を確認する
-- [ ] 同名の `.xls` と `.xlsx` が併存していないか確認する（本プロジェクトは `.xlsx` 1件のみで併存なし）
-- [ ] README の手順に従い、全ての対象ExcelファイルをYAML変換する
-- [ ] 変換後、各YAMLファイルについてExcelの内容とサンプリングで比較し、一致を確認する（最低3件、元データ3件未満の場合は元データ件数分）
-- [ ] サンプリング比較結果を `checks/task-3.md` に記録する（差異があれば原因調査しユーザーに報告・停止）
-- [ ] 変換したYAMLファイルをコミットする（Excelはまだ削除しない）
-- [ ] self-check / QA expert review
+- [x] 対象 Excel ファイルの所在を確認する（.xlsx 1件）
+- [x] 同名の `.xls` と `.xlsx` が併存していないか確認する（本プロジェクトは `.xlsx` 1件のみで併存なし）
+- [x] README の手順に従い、全ての対象ExcelファイルをYAML変換する（Converted 1 file(s)）
+- [x] 変換後、各YAMLファイルについてExcelの内容とサンプリングで比較し、一致を確認する
+- [x] サンプリング比較結果を `checks/task-3.md` に記録する（差異1件→報告・停止→ユーザー承認「挙動等価として続行」）
+- [x] 変換したYAMLファイルをコミットする（Excelはまだ削除しない）
+- [x] self-check / QA expert review
 - [ ] user review
 
 **Completion criteria**:
@@ -162,5 +162,5 @@ NTF（Nablarch Testing Framework）のAI対応として、AIが読み書きで�
 # State
 
 - **Status**: in progress
-- **Last completed**: #2 設定変更（pom.xml に yaml 依存・converter プラグイン、unit-test.xml に yamlInterpreters/YamlTestDataParser 追加。dependency:resolve / help:describe 成功。3レビューOK）
-- **Next**: #3 ExcelテストデータをYAMLに変換
+- **Last completed**: #3 Excel→YAML変換（1ブック→3 YAML）。サンプリング差異1件（R92 EXPECTED_TABLE[3]=PROJECT の欠落、NTF未読ブロックの挙動保存）を報告→ユーザー承認「挙動等価として続行」。YAML状態でmvn test全パス確認済み
+- **Next**: #4 Excelを削除する
