@@ -73,16 +73,16 @@ Excel の生レイアウトを `.rn/ntf-yaml-support/scripts/dump_xlsx.py` で�
 
 | Criterion | Self-check | Evidence | QA | QA Evidence |
 |---|---|---|---|---|
-| 変換対象の全Excelに対応するYAMLが生成されている | OK | 1ブック→3 YAML（setUpDb / 正常ケース / 失敗ケース）を生成 | | |
-| サンプリング比較でExcelとYAMLの内容が一致（差異は報告・停止） | OK（差異1件は報告済み・ユーザー承認で続行） | 失敗ケース全ブロック一致、正常ケースはR92欠落のみ（挙動保存・NTF未読ブロック）。YAMLでテスト全パス実機確認 | | |
-| 変換後のYAMLがコミットされている | OK | 下記コミット | | |
+| 変換対象の全Excelに対応するYAMLが生成されている | OK | 1ブック→3 YAML（setUpDb / 正常ケース / 失敗ケース）を生成 | OK | 3ファイルの生成を独立確認 |
+| サンプリング比較でExcelとYAMLの内容が一致（差異は報告・停止） | OK（差異1件は報告済み・ユーザー承認で続行） | 失敗ケース全ブロック一致、正常ケースはR92欠落のみ（挙動保存・NTF未読ブロック）。YAMLでテスト全パス実機確認 | OK | 全ブロック突合でR92以外の欠落・不一致なし。空シート・振り仮名・null表現・日付も整合。YAML状態で Tests run:2/0/0・BUILD SUCCESS を再現 |
+| 変換後のYAMLがコミットされている | OK | c367605 | OK | コミット確認 |
 
 ## QA Expert Review
 
 | Aspect | Verdict | Evidence / Improvement |
 |---|---|---|
-| Meaningful tests/verification | | |
-| Edge case coverage | | |
+| Meaningful tests/verification | OK | 正常4ショット＋異常1ショット、INS/PROJECT両テーブルの期待値を網羅。YAML変換後も検証内容を保持 |
+| Edge case coverage | OK | 開始日null/終了日null/開始>終了の異常/未処理のみ登録/PROCESS_ID有無/振り仮名処理など境界が維持。R92欠落はNTFのExcel分断ブロック非読込挙動の忠実な再現で挙動等価を実証 |
 
 ## Expert Reviews (code changes only)
 
@@ -91,5 +91,5 @@ N/A — no code changes in this task.
 ## Overall Verdict
 
 - Self-check: OK（差異1件はユーザー承認済みで続行）
-- QA: （記入予定）
-- Ready for user review: （記入予定）
+- QA: OK
+- Ready for user review: Yes
