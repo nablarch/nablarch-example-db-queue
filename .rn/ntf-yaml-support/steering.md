@@ -83,13 +83,13 @@ NTF（Nablarch Testing Framework）のAI対応として、AIが読み書きで�
 
 **Steps**:
 
-- [ ] `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT`（test scope）を追加する
-- [ ] `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` をビルドプラグインとして追加する（`<configuration>` に from=xls / to=yaml / input / output / overwrite を設定）
-- [ ] 本テストが同期送信系（応答電文 `response_*` / sendSync）かを判定する → 非該当（非トリガー）
-- [ ] `yamlInterpreters` リストと `YamlTestDataParser`（`testDataParser` 上書き）を `unit-test.xml` に配置する（test-data.xml import より後・dbInfo 定義より後）
-- [ ] `mvn dependency:resolve` で yaml 依存が解決でき、`mvn help:describe` で converter プラグインの `convert` ゴールが解決できることを確認する
-- [ ] 変更したファイルをコミットする
-- [ ] self-check / QA / language / software-engineering expert review
+- [x] `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT`（test scope）を追加する
+- [x] `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` をビルドプラグインとして追加する（`<configuration>` に from=xls / to=yaml / input / output / overwrite を設定）
+- [x] 本テストが同期送信系（応答電文 `response_*` / sendSync）かを判定する → 非該当（非トリガー）
+- [x] `yamlInterpreters` リストと `YamlTestDataParser`（`testDataParser` 上書き）を `unit-test.xml` に配置する（test-data.xml import より後・dbInfo 定義より後）
+- [x] `mvn dependency:resolve` で yaml 依存が解決でき、`mvn help:describe` で converter プラグインの `convert` ゴールが解決できることを確認する
+- [x] 変更したファイルをコミットする
+- [x] self-check / QA / language / software-engineering expert review
 - [ ] user review
 
 **Completion criteria**:
@@ -162,5 +162,5 @@ NTF（Nablarch Testing Framework）のAI対応として、AIが読み書きで�
 # State
 
 - **Status**: in progress
-- **Last completed**: #1 現状ビルド・テスト全PASS確認（Tests run: 2, Failures: 0, Errors: 0 / BUILD SUCCESS）
-- **Next**: #2 設定変更（pom.xml / unit-test.xml）
+- **Last completed**: #2 設定変更（pom.xml に yaml 依存・converter プラグイン、unit-test.xml に yamlInterpreters/YamlTestDataParser 追加。dependency:resolve / help:describe 成功。3レビューOK）
+- **Next**: #3 ExcelテストデータをYAMLに変換
