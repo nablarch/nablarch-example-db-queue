@@ -149,9 +149,9 @@ NTF（Nablarch Testing Framework）のAI対応として、AIが読み書きで�
 
 **Steps**:
 
-- [ ] `mvn test` が BUILD SUCCESS になることを確認する
-- [ ] テストログで YamlTestDataParser が実際に使われていることを確認する
-- [ ] self-check / QA / language / software-engineering expert review
+- [x] `mvn test` が BUILD SUCCESS になることを確認する（Excel 0件・Tests run:2/全0）
+- [x] テストログで YamlTestDataParser が実際に使われていることを確認する
+- [x] self-check / QA / language / software-engineering expert review
 - [ ] user review
 
 **Completion criteria**:
@@ -161,6 +161,6 @@ NTF（Nablarch Testing Framework）のAI対応として、AIが読み書きで�
 
 # State
 
-- **Status**: in progress
-- **Last completed**: #4 Excel削除（ProjectCreationServiceActionTest.xlsx を git rm。残存Excel 0件）
-- **Next**: #5 YAMLテストデータで全テストをパスさせる（Excelなしで mvn test）
+- **Status**: 全task完了（user review のみ残り）
+- **Last completed**: #5 YAMLテストデータで全テストパス（Excel 0件で mvn clean test → Tests run:2/全0・BUILD SUCCESS。YamlTestDataParser 使用をログで確認。QA/言語/SWエンジニアリング 3レビューOK）
+- **Next**: 全task完了。user review（まとめて実施）→ push はユーザーが実施
