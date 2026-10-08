@@ -1,0 +1,60 @@
+list_maps:
+  - id: "testShots"
+    rows:
+      - no: "1"
+        description: "プロジェクトの登録に失敗する場合する。（対象データのステータスが異常に変更されること)"
+        expectedStatusCode: "20"
+        setUpTable: "1"
+        expectedTable: "1"
+        diConfig: "com/nablarch/example/app/batch/project-creation-service.xml"
+        requestPath: "ProjectCreationService"
+        userId: "batchuser1"
+
+setup_tables:
+  - group_id: "1"
+    table: "INS_PROJECT_RECEIVE_MESSAGE"
+    rows:
+      - RECEIVED_MESSAGE_SEQUENCE: "0000000001"
+        PROJECT_NAME: "プロジェクト１"
+        PROJECT_TYPE: "dev"
+        PROJECT_CLASS: "開発"
+        PROJECT_START_DATE: "20160102"
+        PROJECT_END_DATE: "20160101"
+        CLIENT_ID: "1"
+        PROJECT_MANAGER: "admin"
+        PROJECT_LEADER: "user1"
+        USER_ID: "100"
+        NOTE: "頑張りましょう"
+        SALES: "9"
+        COST_OF_GOODS_SOLD: "99"
+        SGA: "999"
+        ALLOCATION_OF_CORP_EXPENSES: "9999"
+        STATUS: "0"
+        PROCESS_ID: null
+  - group_id: "1"
+    table: "PROJECT"
+    rows: []
+
+expected_tables:
+  - group_id: "1"
+    table: "INS_PROJECT_RECEIVE_MESSAGE"
+    rows:
+      - RECEIVED_MESSAGE_SEQUENCE: "0000000001"
+        PROJECT_NAME: "プロジェクト１"
+        PROJECT_TYPE: "dev"
+        PROJECT_CLASS: "開発"
+        PROJECT_START_DATE: "2016-01-02"
+        PROJECT_END_DATE: "2016-01-01"
+        CLIENT_ID: "1"
+        PROJECT_MANAGER: "admin"
+        PROJECT_LEADER: "user1"
+        USER_ID: "100"
+        NOTE: "頑張りましょう"
+        SALES: "9"
+        COST_OF_GOODS_SOLD: "99"
+        SGA: "999"
+        ALLOCATION_OF_CORP_EXPENSES: "9999"
+        STATUS: "2"
+  - group_id: "1"
+    table: "PROJECT"
+    rows: []
