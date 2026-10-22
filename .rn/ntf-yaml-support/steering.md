@@ -25,6 +25,12 @@
 - `scripts/dump_xlsx.py`: NTF Excel テストデータ（.xlsx）の各シートをグリッド表示する検証用スクリプト（標準ライブラリのみ。openpyxl 不要）。Task #1 ではユーザーが修正したテストデータの新旧比較（差分は `evidence/task-1-testdata-fix.diff`）に使い、Task #3 では Excel の生レイアウト確認に使う（ふりがなも連結表示するため、セル値の比較には compare_xlsx_yaml.py を使う）。使い方: `python3 -I dump_xlsx.py <xlsx> [シート名の部分一致]`
 - `scripts/compare_xlsx_yaml.py`: Task #3 のサンプリング比較用。xlsx の LIST_MAP / SETUP_TABLE / EXPECTED_TABLE ブロックを NTF と同じ規則で抽出し、同名 YAML と全セル比較する（ふりがな除外、Excel の `null` ⇔ YAML null、YAML は nablarch-testing-yaml（snakeyaml-engine）と同じ YAML 1.2 の真偽値解釈）。使い方: `python3 -I compare_xlsx_yaml.py <xlsx> <YAML ディレクトリ>`。全一致で終了コード 0
 
+- 依存: compare_xlsx_yaml.py は PyYAML（標準ライブラリ外）が必要。dump_xlsx.py は標準ライブラリのみ。
+- Excel は Task #4 で削除済みのため、スクリプトを再実行する場合は履歴から取り出す（例: `git show 668f93d:src/test/java/com/nablarch/example/app/batch/ProjectCreationServiceActionTest.xlsx > <一時ディレクトリ>/ProjectCreationServiceActionTest.xlsx`）。
+
+## Commit Notes
+- `5a5ec02`（Task #2）単独では `mvn test` が通らない（parser は YAML 化済み・YAML 未生成）。Task #3 の `668f93d` 以降は通る構成（bisect 時の注意）。
+
 ## Tasks
 
 ### #1: ベースライン化（developと同一状態）し、全PASSを確認する
@@ -110,7 +116,7 @@
 - [x] `mvn test` が BUILD SUCCESS になることを確認する（`mvn -B clean generate-resources` → `mvn -B test`。Tests run: 2, Failures: 0, Errors: 0）
 - [x] テストログで YamlTestDataParser が使われていることを確認する（testDataParser の上書きログと YamlTestDataParser のログ。加えて YAML 期待値の一時改変で FAILURE になることを確認し、復元後に再度 BUILD SUCCESS）
 - [x] self-check
-- [ ] QA / language / software-engineering expert review (Agent: general-purpose / Opus)
+- [x] QA / language / software-engineering expert review (Agent: general-purpose / Opus) — 全項目 OK（GWT は N/A）
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - `mvn test` が BUILD SUCCESS で終了する（全テストパス、Excel ファイルなし）
