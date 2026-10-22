@@ -50,7 +50,7 @@
 - [x] 変更ファイルをコミットする
 - [x] self-check
 - [x] QA expert review (Agent: general-purpose / Opus) — 全項目 OK
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施）— OK
 **Completion criteria**:
 - 既存の `ntf-yaml-support` ブランチ上で作業しており、コミット履歴が維持されている（過去の移行コミットが残っている）
 - ブランチの既存先端の上に、ワーキングツリー全体が `develop` と同一内容になる新規コミットが1つ積まれている
@@ -69,7 +69,7 @@
 - [x] 変更したファイルをコミットする
 - [x] self-check
 - [x] QA / language / software-engineering expert review (Agent: general-purpose / Opus) — 全項目 OK（GWT は N/A）。本コミット単独では `mvn test` が通らない点（YAML 未生成）を checks/task-2.md の Notes に記録
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施）— OK
 **Completion criteria**:
 - `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT` が test スコープで追加されている
 - `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` がビルドプラグインとして追加されている
@@ -89,7 +89,7 @@
 - [x] YAML ファイルをコミットする（Excel はまだ削除しない）
 - [x] self-check
 - [x] QA expert review (Agent: general-purpose / Opus) — 全項目 OK（差異なし）。改善提案（改変テストの証跡化・空セルのサンプル追加・スクリプト制約の明記）を反映
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施）— OK
 **Completion criteria**:
 - 全対象 Excel に対応する YAML が生成されている
 - サンプリング比較で Excel と YAML の内容が一致している
@@ -104,7 +104,7 @@
 - [x] 削除をコミットする
 - [x] self-check
 - [x] QA expert review (Agent: general-purpose / Opus) — 全項目 OK
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施）— OK
 **Completion criteria**:
 - 変換対象だった全 Excel ファイルが削除されている
 - 削除がコミットされている
@@ -117,7 +117,7 @@
 - [x] テストログで YamlTestDataParser が使われていることを確認する（testDataParser の上書きログと YamlTestDataParser のログ。加えて YAML 期待値の一時改変で FAILURE になることを確認し、復元後に再度 BUILD SUCCESS）
 - [x] self-check
 - [x] QA / language / software-engineering expert review (Agent: general-purpose / Opus) — 全項目 OK（GWT は N/A）
-- [ ] user review（全 task 完了後にまとめて実施）
+- [x] user review（全 task 完了後にまとめて実施）— OK
 **Completion criteria**:
 - `mvn test` が BUILD SUCCESS で終了する（全テストパス、Excel ファイルなし）
 - テストログで YamlTestDataParser が実際に使われていることが確認できる
