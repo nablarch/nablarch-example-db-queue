@@ -97,7 +97,7 @@
 - [x] 残存 Excel が0件であることを `checks/task-4.md` に記録する（追跡ファイル・作業ツリーとも0件）
 - [x] 削除をコミットする
 - [x] self-check
-- [ ] QA expert review (Agent: general-purpose / Opus)
+- [x] QA expert review (Agent: general-purpose / Opus) — 全項目 OK
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - 変換対象だった全 Excel ファイルが削除されている
