@@ -1,0 +1,12 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.nablarch.example:nablarch-example-db-queue >-----------
+[INFO] Building nablarch-example-db-queue 6-NEXT-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.116 s
+[INFO] Finished at: 2026-10-22T15:57:33+09:00
+[INFO] ------------------------------------------------------------------------

@@ -54,14 +54,15 @@
 **Purpose**: `pom.xml` に `nablarch-testing-yaml`（test 依存）と `nablarch-testing-converter`（ビルドプラグイン）を追加し、`YamlTestDataParser` を testdata.html の設定例どおりに配置する。
 **Prerequisites**: #1
 **Steps**:
-- [ ] `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT`（test scope）を追加する
-- [ ] `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` を追加する（`<configuration>` に from=xls / to=yaml / input / output / overwrite。web/batch 準拠）
-- [ ] 応答電文（`response_*` / sendSync）の有無で、実行中に `testDataParser` が参照される構成かを判定する
-- [ ] 判定結果に応じて `YamlTestDataParser` を配置する（`interpreters` は `dateTimeInterpreter` → `compositeInterpreter` の2つのみ）
-- [ ] `mvn dependency:resolve` と `mvn help:describe -Dplugin=com.nablarch.framework:nablarch-testing-converter:1.0.0-SNAPSHOT` で解決を確認する
-- [ ] 変更したファイルをコミットする
-- [ ] self-check / QA / language / software-engineering expert review
-- [ ] user review
+- [x] `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT`（test scope）を追加する
+- [x] `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` を追加する（plugin 直下の `<configuration>` に from=xls / to=yaml / input / output=`${project.basedir}/src/test/java` / overwrite=true。nablarch-example-batch 準拠）。pom.xml の改行コード（CRLF）は維持する
+- [x] 応答電文（`response_*` / sendSync）の有無で判定する → 非該当（`@BatchRequestTest` の DB キュー監視バッチ。`src/test` 配下に `response_` / sendSync なし。テスト用 diConfig `project-creation-service.xml` は `db-queue.xml` のみ import し、実行中にテストデータを読むモックなし）
+- [x] `unit-test.xml` に `YamlTestDataParser` を配置する（`test-data.xml` の import・`dbInfo` 定義より後。`interpreters` 内の `<list>` に `dateTimeInterpreter` → `compositeInterpreter` の2つのみ）
+- [x] `mvn -o validate` / `mvn -o dependency:resolve` / `mvn -o help:describe -Dplugin=com.nablarch.framework:nablarch-testing-converter:1.0.0-SNAPSHOT` がいずれも BUILD SUCCESS（`evidence/task-2-*.txt`）
+- [x] 変更したファイルをコミットする
+- [x] self-check
+- [ ] QA / language / software-engineering expert review (Agent: general-purpose / Opus)
+- [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT` が test スコープで追加されている
 - `pom.xml` の `<build><plugins>` に `nablarch-testing-converter:1.0.0-SNAPSHOT` がビルドプラグインとして追加されている
