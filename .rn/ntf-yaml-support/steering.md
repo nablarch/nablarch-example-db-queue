@@ -82,7 +82,7 @@
 - [x] 比較結果を `checks/task-3.md` の Sampling Comparison に記録する
 - [x] YAML ファイルをコミットする（Excel はまだ削除しない）
 - [x] self-check
-- [ ] QA expert review (Agent: general-purpose / Opus)
+- [x] QA expert review (Agent: general-purpose / Opus) — 全項目 OK（差異なし）。改善提案（改変テストの証跡化・空セルのサンプル追加・スクリプト制約の明記）を反映
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - 全対象 Excel に対応する YAML が生成されている
