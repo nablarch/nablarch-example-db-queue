@@ -107,10 +107,11 @@
 **Purpose**: Excel なしで全テストがパスすることを確認する。
 **Prerequisites**: #4
 **Steps**:
-- [ ] `mvn test` が BUILD SUCCESS になることを確認する
-- [ ] テストログで YamlTestDataParser が使われていることを確認する
-- [ ] self-check / QA / language / software-engineering expert review
-- [ ] user review
+- [x] `mvn test` が BUILD SUCCESS になることを確認する（`mvn -B clean generate-resources` → `mvn -B test`。Tests run: 2, Failures: 0, Errors: 0）
+- [x] テストログで YamlTestDataParser が使われていることを確認する（testDataParser の上書きログと YamlTestDataParser のログ。加えて YAML 期待値の一時改変で FAILURE になることを確認し、復元後に再度 BUILD SUCCESS）
+- [x] self-check
+- [ ] QA / language / software-engineering expert review (Agent: general-purpose / Opus)
+- [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - `mvn test` が BUILD SUCCESS で終了する（全テストパス、Excel ファイルなし）
 - テストログで YamlTestDataParser が実際に使われていることが確認できる
