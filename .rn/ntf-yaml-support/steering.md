@@ -42,7 +42,7 @@
 - [x] 結果を `checks/task-1.md` に記録する
 - [x] 変更ファイルをコミットする
 - [x] self-check
-- [ ] QA expert review (Agent: general-purpose / Opus)
+- [x] QA expert review (Agent: general-purpose / Opus) — 全項目 OK
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - 既存の `ntf-yaml-support` ブランチ上で作業しており、コミット履歴が維持されている（過去の移行コミットが残っている）
@@ -75,6 +75,7 @@
 - [ ] 対象 Excel の所在を確認する
 - [ ] 同名 `.xls` / `.xlsx` の併存を確認する
 - [ ] converter README の手順で全対象 Excel を YAML 変換する
+- [ ] 変換時に warnInterleavedBlocks 警告が出ないこと、ケース4（正常系 testShots No.4）の YAML に `EXPECTED_TABLE` グループ4の PROJECT 期待値ブロックが含まれることを確認する（Task #1 QA の提案。Task #1 で修正したテストデータの反映確認）
 - [ ] 各 YAML ファイルを Excel とサンプリング比較する（各ファイル最低3件）
 - [ ] 比較結果を `checks/task-3.md` の Sampling Comparison に記録する
 - [ ] YAML ファイルをコミットする（Excel はまだ削除しない）
