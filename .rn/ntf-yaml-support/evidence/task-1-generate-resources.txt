@@ -1,0 +1,44 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.nablarch.example:nablarch-example-db-queue >-----------
+[INFO] Building nablarch-example-db-queue 6-NEXT-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ nablarch-example-db-queue ---
+[INFO] Deleting /home/k10949/workspace/nablarch-example-db-queue/target
+[INFO] 
+[INFO] --- gsp-dba:5.2.0:generate-ddl (setup-db) @ nablarch-example-db-queue ---
+[WARNING] 1 problem was encountered while building the effective model for org.seasar.container:s2jdbc-gen:jar:2.4.46 during dependency collection step for plugin (use -X to see details)
+[INFO] 
+[INFO] --- gsp-dba:5.2.0:execute-ddl (setup-db) @ nablarch-example-db-queue ---
+DROP TABLE PUBLIC.PROJECT
+DROP TABLE PUBLIC.BATCH_REQUEST
+DROP TABLE PUBLIC.INS_PROJECT_RECEIVE_MESSAGE
+[INFO] 43 of 43 SQL statements executed successfully
+[INFO] 
+[INFO] --- gsp-dba:5.2.0:generate-entity (setup-db) @ nablarch-example-db-queue ---
+10月 22, 2026 3:54:29 午後 org.seasar.framework.log.Logger log
+情報: バージョン : S2JDBC-Gen 2.4.46
+10月 22, 2026 3:54:29 午後 org.seasar.framework.log.Logger log
+情報: s2-frameworkのバージョンは2.4.46です。
+10月 22, 2026 3:54:29 午後 org.seasar.framework.log.Logger log
+情報: s2-extensionのバージョンは2.4.46です。
+10月 22, 2026 3:54:29 午後 org.seasar.framework.log.Logger log
+情報: s2-tigerのバージョンは2.4.46です。
+10月 22, 2026 3:54:29 午後 org.seasar.framework.log.Logger log
+警告: ルートパッケージ(com.nablarch.example.app)に対応するリソースがクラスパスから見つかりませんでした。
+10月 22, 2026 3:54:30 午後 org.seasar.framework.log.Logger info
+情報: Running on [ENV]ut, [DEPLOY MODE]Normal Mode
+[INFO] 
+[INFO] --- gsp-dba:5.2.0:load-data (setup-db) @ nablarch-example-db-queue ---
+[INFO] 取込を開始します:BATCH_REQUEST.csv
+[INFO] 
+[INFO] --- build-helper:3.6.0:add-source (default) @ nablarch-example-db-queue ---
+[INFO] Source directory: /home/k10949/workspace/nablarch-example-db-queue/target/generated-sources/entity added.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.211 s
+[INFO] Finished at: 2026-10-22T15:54:30+09:00
+[INFO] ------------------------------------------------------------------------

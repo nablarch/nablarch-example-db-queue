@@ -1,0 +1,156 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.nablarch.example:nablarch-example-db-queue >-----------
+[INFO] Building nablarch-example-db-queue 6-NEXT-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.7.0:resolve (default-cli) @ nablarch-example-db-queue ---
+[INFO] Can't extract module name from nablarch-main-default-configuration-6-NEXT-SNAPSHOT.jar: nablarch.main.default.configuration.6.NEXT.SNAPSHOT: Invalid module name: 'default' is not a Java identifier
+[INFO] Can't extract module name from nablarch-batch-6-NEXT-SNAPSHOT.jar: nablarch.batch.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-beans-6-NEXT-SNAPSHOT.jar: nablarch.core.beans.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-message-6-NEXT-SNAPSHOT.jar: nablarch.core.message.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-repository-6-NEXT-SNAPSHOT.jar: nablarch.core.repository.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-transaction-6-NEXT-SNAPSHOT.jar: nablarch.core.transaction.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-validation-ee-6-NEXT-SNAPSHOT.jar: nablarch.core.validation.ee.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-validation-6-NEXT-SNAPSHOT.jar: nablarch.core.validation.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-common-jdbc-6-NEXT-SNAPSHOT.jar: nablarch.common.jdbc.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-common-dao-6-NEXT-SNAPSHOT.jar: nablarch.common.dao.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-common-idgenerator-6-NEXT-SNAPSHOT.jar: nablarch.common.idgenerator.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-common-databind-6-NEXT-SNAPSHOT.jar: nablarch.common.databind.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-fw-batch-6-NEXT-SNAPSHOT.jar: nablarch.fw.batch.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-fw-standalone-6-NEXT-SNAPSHOT.jar: nablarch.fw.standalone.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-dataformat-6-NEXT-SNAPSHOT.jar: nablarch.core.dataformat.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-fw-6-NEXT-SNAPSHOT.jar: nablarch.fw.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-jdbc-6-NEXT-SNAPSHOT.jar: nablarch.core.jdbc.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-applog-6-NEXT-SNAPSHOT.jar: nablarch.core.applog.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from slf4j-nablarch-adaptor-6-NEXT-SNAPSHOT.jar: slf4j.nablarch.adaptor.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-core-6-NEXT-SNAPSHOT.jar: nablarch.core.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-testing-default-configuration-6-NEXT-SNAPSHOT.jar: nablarch.testing.default.configuration.6.NEXT.SNAPSHOT: Invalid module name: 'default' is not a Java identifier
+[INFO] Can't extract module name from nablarch-testing-6-NEXT-SNAPSHOT.jar: nablarch.testing.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-fw-web-extension-6-NEXT-SNAPSHOT.jar: nablarch.fw.web.extension.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-fw-messaging-http-6-NEXT-SNAPSHOT.jar: nablarch.fw.messaging.http.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-fw-messaging-6-NEXT-SNAPSHOT.jar: nablarch.fw.messaging.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-fw-web-6-NEXT-SNAPSHOT.jar: nablarch.fw.web.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-common-encryption-6-NEXT-SNAPSHOT.jar: nablarch.common.encryption.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] Can't extract module name from nablarch-testing-junit5-6-NEXT-SNAPSHOT.jar: nablarch.testing.junit5.6.NEXT.SNAPSHOT: Invalid module name: '6' is not a Java identifier
+[INFO] 
+[INFO] The following files have been resolved:
+[INFO]    com.nablarch.configuration:nablarch-main-default-configuration:jar:6-NEXT-SNAPSHOT:runtime
+[INFO]    com.nablarch.profile:nablarch-batch:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-beans:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-message:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-repository:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-transaction:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-validation-ee:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-validation:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    jakarta.validation:jakarta.validation-api:jar:3.0.2:compile -- module jakarta.validation
+[INFO]    com.nablarch.framework:nablarch-common-jdbc:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-common-dao:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-common-idgenerator:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    jakarta.persistence:jakarta.persistence-api:jar:3.1.0:compile -- module jakarta.persistence
+[INFO]    com.nablarch.framework:nablarch-common-databind:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-fw-batch:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-fw-standalone:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-dataformat:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-fw:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-jdbc:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.framework:nablarch-core-applog:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.h2database:h2:jar:2.2.220:compile -- module com.h2database [auto]
+[INFO]    jakarta.annotation:jakarta.annotation-api:jar:2.1.1:compile -- module jakarta.annotation
+[INFO]    com.zaxxer:HikariCP:jar:3.3.1:runtime -- module com.zaxxer.hikari [auto]
+[INFO]    org.slf4j:slf4j-api:jar:2.0.11:runtime -- module org.slf4j
+[INFO]    com.nablarch.integration:slf4j-nablarch-adaptor:jar:6-NEXT-SNAPSHOT:runtime
+[INFO]    com.nablarch.framework:nablarch-core:jar:6-NEXT-SNAPSHOT:compile
+[INFO]    com.nablarch.configuration:nablarch-testing-default-configuration:jar:6-NEXT-SNAPSHOT:test
+[INFO]    com.nablarch.framework:nablarch-testing:jar:6-NEXT-SNAPSHOT:test
+[INFO]    com.nablarch.framework:nablarch-fw-web-extension:jar:6-NEXT-SNAPSHOT:test
+[INFO]    org.apache.activemq:artemis-server:jar:2.37.0:test -- module artemis.server (auto)
+[INFO]    com.github.ben-manes.caffeine:caffeine:jar:3.1.8:test -- module com.github.benmanes.caffeine
+[INFO]    org.apache.activemq:artemis-commons:jar:2.37.0:test -- module artemis.commons (auto)
+[INFO]    org.apache.activemq:artemis-selector:jar:2.37.0:test -- module artemis.selector (auto)
+[INFO]    org.apache.activemq:artemis-journal:jar:2.37.0:test -- module artemis.journal (auto)
+[INFO]    org.apache.activemq:activemq-artemis-native:jar:2.0.0:test -- module artemis.jni [auto]
+[INFO]    org.apache.activemq:artemis-jdbc-store:jar:2.37.0:test -- module artemis.jdbc.store (auto)
+[INFO]    org.apache.commons:commons-dbcp2:jar:2.12.0:test -- module org.apache.commons.dbcp2
+[INFO]    org.apache.commons:commons-pool2:jar:2.12.0:test -- module org.apache.commons.pool2
+[INFO]    org.apache.activemq:artemis-core-client:jar:2.37.0:test -- module artemis.core.client (auto)
+[INFO]    org.jgroups:jgroups:jar:5.3.10.Final:test -- module org.jgroups [auto]
+[INFO]    io.netty:netty-handler-proxy:jar:4.1.112.Final:test -- module io.netty.handler.proxy [auto]
+[INFO]    io.netty:netty-codec-socks:jar:4.1.112.Final:test -- module io.netty.codec.socks [auto]
+[INFO]    io.netty:netty-resolver:jar:4.1.112.Final:test -- module io.netty.resolver [auto]
+[INFO]    de.dentrassi.crypto:pem-keystore:jar:2.4.0:test -- module pem.keystore (auto)
+[INFO]    org.bouncycastle:bcprov-jdk18on:jar:1.78:test -- module org.bouncycastle.provider
+[INFO]    org.bouncycastle:bcpkix-jdk18on:jar:1.78:test -- module org.bouncycastle.pkix
+[INFO]    org.bouncycastle:bcutil-jdk18on:jar:1.78:test -- module org.bouncycastle.util
+[INFO]    org.apache.activemq:artemis-lockmanager-api:jar:2.37.0:test -- module artemis.lockmanager.api (auto)
+[INFO]    org.jctools:jctools-core:jar:4.0.5:test -- module org.jctools.core
+[INFO]    io.netty:netty-buffer:jar:4.1.112.Final:test -- module io.netty.buffer [auto]
+[INFO]    io.netty:netty-transport:jar:4.1.112.Final:test -- module io.netty.transport [auto]
+[INFO]    io.netty:netty-codec-http:jar:4.1.112.Final:test -- module io.netty.codec.http [auto]
+[INFO]    io.netty:netty-common:jar:4.1.112.Final:test -- module io.netty.common [auto]
+[INFO]    io.netty:netty-handler:jar:4.1.112.Final:test -- module io.netty.handler [auto]
+[INFO]    io.netty:netty-transport-native-unix-common:jar:4.1.112.Final:test -- module io.netty.transport.unix.common [auto]
+[INFO]    io.netty:netty-transport-native-epoll:jar:linux-x86_64:4.1.112.Final:test -- module io.netty.transport.epoll.linux.x86_64 [auto]
+[INFO]    io.netty:netty-transport-classes-epoll:jar:4.1.112.Final:test -- module io.netty.transport.classes.epoll [auto]
+[INFO]    io.netty:netty-transport-native-kqueue:jar:osx-x86_64:4.1.112.Final:test -- module io.netty.transport.kqueue.osx.x86_64 [auto]
+[INFO]    io.netty:netty-transport-classes-kqueue:jar:4.1.112.Final:test -- module io.netty.transport.classes.kqueue [auto]
+[INFO]    io.netty:netty-codec:jar:4.1.112.Final:test -- module io.netty.codec [auto]
+[INFO]    commons-beanutils:commons-beanutils:jar:1.9.4:test -- module commons.beanutils (auto)
+[INFO]    commons-logging:commons-logging:jar:1.2:test -- module commons.logging (auto)
+[INFO]    org.apache.commons:commons-lang3:jar:3.16.0:test -- module org.apache.commons.lang3
+[INFO]    org.apache.commons:commons-configuration2:jar:2.11.0:test -- module org.apache.commons.configuration2
+[INFO]    org.apache.commons:commons-text:jar:1.12.0:test -- module org.apache.commons.text
+[INFO]    commons-collections:commons-collections:jar:3.2.2:test -- module commons.collections (auto)
+[INFO]    io.micrometer:micrometer-core:jar:1.13.3:test -- module micrometer.core [auto]
+[INFO]    io.micrometer:micrometer-commons:jar:1.13.3:test -- module micrometer.commons [auto]
+[INFO]    io.micrometer:micrometer-observation:jar:1.13.3:test -- module micrometer.observation [auto]
+[INFO]    org.apache.activemq:artemis-jakarta-server:jar:2.37.0:test -- module artemis.jakarta.server (auto)
+[INFO]    org.apache.activemq:artemis-jakarta-service-extensions:jar:2.37.0:test -- module artemis.jakarta.service.extensions (auto)
+[INFO]    jakarta.jms:jakarta.jms-api:jar:3.1.0:test -- module jakarta.messaging
+[INFO]    jakarta.transaction:jakarta.transaction-api:jar:2.0.1:test -- module jakarta.transaction
+[INFO]    org.apache.activemq:artemis-jakarta-client:jar:2.37.0:test -- module artemis.jakarta.client (auto)
+[INFO]    xml-apis:xml-apis:jar:1.0.b2:test -- module xml.apis (auto)
+[INFO]    org.apache.poi:poi-ooxml:jar:3.8:test -- module poi.ooxml (auto)
+[INFO]    org.apache.poi:poi:jar:3.8:test -- module poi (auto)
+[INFO]    commons-codec:commons-codec:jar:1.5:test -- module commons.codec (auto)
+[INFO]    org.apache.poi:poi-ooxml-schemas:jar:3.8:test -- module poi.ooxml.schemas (auto)
+[INFO]    org.apache.xmlbeans:xmlbeans:jar:2.3.0:test -- module xmlbeans (auto)
+[INFO]    stax:stax-api:jar:1.0.1:test -- module stax.api (auto)
+[INFO]    dom4j:dom4j:jar:1.6.1:test -- module dom4j (auto)
+[INFO]    com.nablarch.framework:nablarch-fw-messaging-http:jar:6-NEXT-SNAPSHOT:runtime
+[INFO]    com.nablarch.framework:nablarch-fw-messaging:jar:6-NEXT-SNAPSHOT:runtime
+[INFO]    com.nablarch.framework:nablarch-fw-web:jar:6-NEXT-SNAPSHOT:runtime
+[INFO]    com.nablarch.framework:nablarch-common-encryption:jar:6-NEXT-SNAPSHOT:runtime
+[INFO]    org.eclipse.angus:angus-activation:jar:1.0.0:runtime -- module com.sun.activation.registries
+[INFO]    jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.0:runtime -- module jakarta.xml.bind
+[INFO]    com.sun.xml.bind:jaxb-impl:jar:4.0.1:runtime -- module com.sun.xml.bind
+[INFO]    com.sun.xml.bind:jaxb-core:jar:4.0.1:runtime -- module com.sun.xml.bind.core
+[INFO]    jakarta.activation:jakarta.activation-api:jar:2.1.0:runtime -- module jakarta.activation
+[INFO]    org.hamcrest:hamcrest-all:jar:1.3:test -- module hamcrest.all (auto)
+[INFO]    junit:junit:jar:4.13.1:test -- module junit [auto]
+[INFO]    org.junit.jupiter:junit-jupiter:jar:5.11.0:test -- module org.junit.jupiter
+[INFO]    org.junit.jupiter:junit-jupiter-api:jar:5.11.0:test -- module org.junit.jupiter.api
+[INFO]    org.opentest4j:opentest4j:jar:1.3.0:test -- module org.opentest4j
+[INFO]    org.junit.platform:junit-platform-commons:jar:1.11.0:test -- module org.junit.platform.commons
+[INFO]    org.apiguardian:apiguardian-api:jar:1.1.2:test -- module org.apiguardian.api
+[INFO]    org.junit.jupiter:junit-jupiter-params:jar:5.11.0:test -- module org.junit.jupiter.params
+[INFO]    org.junit.jupiter:junit-jupiter-engine:jar:5.11.0:test -- module org.junit.jupiter.engine
+[INFO]    org.junit.platform:junit-platform-engine:jar:1.11.0:test -- module org.junit.platform.engine
+[INFO]    com.nablarch.framework:nablarch-testing-junit5:jar:6-NEXT-SNAPSHOT:test
+[INFO]    com.nablarch.framework:nablarch-testing-yaml:jar:1.0.0-SNAPSHOT:test -- module nablarch.testing.yaml (auto)
+[INFO]    org.snakeyaml:snakeyaml-engine:jar:3.0.1:test -- module org.snakeyaml.engine
+[INFO]    com.networknt:json-schema-validator:jar:1.5.9:test -- module com.networknt.schema
+[INFO]    com.ethlo.time:itu:jar:1.14.0:test -- module com.ethlo.time
+[INFO]    com.fasterxml.jackson.core:jackson-databind:jar:2.18.3:test -- module com.fasterxml.jackson.databind
+[INFO]    com.fasterxml.jackson.core:jackson-annotations:jar:2.18.3:test -- module com.fasterxml.jackson.annotation
+[INFO]    com.fasterxml.jackson.core:jackson-core:jar:2.18.3:test -- module com.fasterxml.jackson.core
+[INFO]    com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.18.3:test -- module com.fasterxml.jackson.dataformat.yaml
+[INFO]    org.yaml:snakeyaml:jar:2.3:test -- module org.yaml.snakeyaml
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.740 s
+[INFO] Finished at: 2026-10-22T15:57:36+09:00
+[INFO] ------------------------------------------------------------------------
