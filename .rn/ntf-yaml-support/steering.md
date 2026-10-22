@@ -61,7 +61,7 @@
 - [x] `mvn -o validate` / `mvn -o dependency:resolve` / `mvn -o help:describe -Dplugin=com.nablarch.framework:nablarch-testing-converter:1.0.0-SNAPSHOT` がいずれも BUILD SUCCESS（`evidence/task-2-*.txt`）
 - [x] 変更したファイルをコミットする
 - [x] self-check
-- [ ] QA / language / software-engineering expert review (Agent: general-purpose / Opus)
+- [x] QA / language / software-engineering expert review (Agent: general-purpose / Opus) — 全項目 OK（GWT は N/A）。本コミット単独では `mvn test` が通らない点（YAML 未生成）を checks/task-2.md の Notes に記録
 - [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - `pom.xml` に `nablarch-testing-yaml:1.0.0-SNAPSHOT` が test スコープで追加されている
