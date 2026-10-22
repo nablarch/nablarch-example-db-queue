@@ -22,7 +22,8 @@
   2. `LANG=ja_JP.UTF-8 mvn -B test`
 
 ## Scripts
-- `scripts/dump_xlsx.py`: NTF Excel テストデータ（.xlsx）の各シートをグリッド表示する検証用スクリプト（標準ライブラリのみ。openpyxl 不要）。Task #1 ではユーザーが修正したテストデータの新旧比較（差分は `evidence/task-1-testdata-fix.diff`）に使い、Task #3 では Excel と YAML のサンプリング比較に使う。使い方: `python3 -I dump_xlsx.py <xlsx> [シート名の部分一致]`
+- `scripts/dump_xlsx.py`: NTF Excel テストデータ（.xlsx）の各シートをグリッド表示する検証用スクリプト（標準ライブラリのみ。openpyxl 不要）。Task #1 ではユーザーが修正したテストデータの新旧比較（差分は `evidence/task-1-testdata-fix.diff`）に使い、Task #3 では Excel の生レイアウト確認に使う（ふりがなも連結表示するため、セル値の比較には compare_xlsx_yaml.py を使う）。使い方: `python3 -I dump_xlsx.py <xlsx> [シート名の部分一致]`
+- `scripts/compare_xlsx_yaml.py`: Task #3 のサンプリング比較用。xlsx の LIST_MAP / SETUP_TABLE / EXPECTED_TABLE ブロックを NTF と同じ規則で抽出し、同名 YAML と全セル比較する（ふりがな除外、Excel の `null` ⇔ YAML null、YAML は nablarch-testing-yaml（snakeyaml-engine）と同じ YAML 1.2 の真偽値解釈）。使い方: `python3 -I compare_xlsx_yaml.py <xlsx> <YAML ディレクトリ>`。全一致で終了コード 0
 
 ## Tasks
 
@@ -73,15 +74,16 @@
 **Purpose**: `nablarch-testing-converter` で Excel テストデータを YAML に変換し、サンプリングで内容一致を確認する。
 **Prerequisites**: #2
 **Steps**:
-- [ ] 対象 Excel の所在を確認する
-- [ ] 同名 `.xls` / `.xlsx` の併存を確認する
-- [ ] converter README の手順で全対象 Excel を YAML 変換する
-- [ ] 変換時に warnInterleavedBlocks 警告が出ないこと、ケース4（正常系 testShots No.4）の YAML に `EXPECTED_TABLE` グループ4の PROJECT 期待値ブロックが含まれることを確認する（Task #1 QA の提案。Task #1 で修正したテストデータの反映確認）
-- [ ] 各 YAML ファイルを Excel とサンプリング比較する（各ファイル最低3件）
-- [ ] 比較結果を `checks/task-3.md` の Sampling Comparison に記録する
-- [ ] YAML ファイルをコミットする（Excel はまだ削除しない）
-- [ ] self-check / QA expert review
-- [ ] user review
+- [x] 対象 Excel の所在を確認する（`ProjectCreationServiceActionTest.xlsx` の1件）
+- [x] 同名 `.xls` / `.xlsx` の併存を確認する（併存なし）
+- [x] converter README の手順で全対象 Excel を YAML 変換する（`LANG=ja_JP.UTF-8 mvn -B -o com.nablarch.framework:nablarch-testing-converter:1.0.0-SNAPSHOT:convert`。pom.xml の `<configuration>` を使用。`Converted 1 file(s).` / BUILD SUCCESS）
+- [x] 変換時に warnInterleavedBlocks 警告が出ないこと、ケース4（正常系 testShots No.4）の YAML に `EXPECTED_TABLE` グループ4の PROJECT 期待値ブロックが含まれることを確認する（Task #1 QA の提案。警告なし・出力あり）
+- [x] 各 YAML ファイルを Excel と比較する（`scripts/compare_xlsx_yaml.py` で全ブロック・全セル比較 → ALL MATCH。差異検出能力も改変コピーで確認）
+- [x] 比較結果を `checks/task-3.md` の Sampling Comparison に記録する
+- [x] YAML ファイルをコミットする（Excel はまだ削除しない）
+- [x] self-check
+- [ ] QA expert review (Agent: general-purpose / Opus)
+- [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - 全対象 Excel に対応する YAML が生成されている
 - サンプリング比較で Excel と YAML の内容が一致している
