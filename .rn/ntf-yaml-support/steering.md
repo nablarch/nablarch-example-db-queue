@@ -93,11 +93,12 @@
 **Purpose**: 変換対象だった Excel を削除してコミットする。
 **Prerequisites**: #3
 **Steps**:
-- [ ] 変換対象の Excel を削除する
-- [ ] 残存 Excel が0件であることを `checks/task-4.md` に記録する
-- [ ] 削除をコミットする
-- [ ] self-check / QA expert review
-- [ ] user review
+- [x] 変換対象の Excel を削除する（`git rm` で `ProjectCreationServiceActionTest.xlsx`）
+- [x] 残存 Excel が0件であることを `checks/task-4.md` に記録する（追跡ファイル・作業ツリーとも0件）
+- [x] 削除をコミットする
+- [x] self-check
+- [ ] QA expert review (Agent: general-purpose / Opus)
+- [ ] user review（全 task 完了後にまとめて実施）
 **Completion criteria**:
 - 変換対象だった全 Excel ファイルが削除されている
 - 削除がコミットされている
